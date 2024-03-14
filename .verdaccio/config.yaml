@@ -1,0 +1,27 @@
+storage: ./storage
+auth:
+  htpasswd:
+    file: ./htpasswd
+uplinks:
+  pypestream-npmjs:
+    url: https://registry.npmjs.org/
+    auth:
+      type: bearer
+      token_env: true # by defaults points to the environment variable `NPM_TOKEN`
+  npmjs:
+    url: https://registry.npmjs.org/
+
+packages:
+  '@pypestream/test-pkg':
+    access: $all
+    publish: $authenticated
+    proxy: pypestream-npmjs
+  '@pypestream/email-templates':
+    access: $allg
+    publish: $authenticated
+    proxy: pypestream-npmjs
+  '**':
+    proxy: npmjs
+    access: $all
+    publish: $all
+log: { type: stdout, format: pretty, level: http }

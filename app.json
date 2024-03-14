@@ -1,0 +1,6 @@
+{
+  "name": "verdaccio-heroku",
+  "description": "A private npm registry with Heroku",
+  "keywords": ["verdaccio", "docker", "npm"],
+  "stack": "container"
+}
